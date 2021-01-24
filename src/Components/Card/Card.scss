@@ -1,0 +1,21 @@
+.card {
+  width: 280px;
+  height: 328px;
+  border: 1px solid #e1e1e1;
+  box-sizing: border-box;
+
+  img {
+    display: block;
+  }
+
+  .inner {
+    padding: 20px 23px 24px;
+  }
+
+  .price {
+    &__previous,
+    &__current {
+      display: block;
+    }
+  }
+}

@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Logo, Menu, Search, Card } from "./Components";
+
+import { db } from "./db";
+
+import logoLight from "./assets/logo-light.png";
+import logoDark from "./assets/logo-dark.png";
+
+import "./App.scss";
 
 function App() {
+  const [navItem] = useState([
+    {
+      name: "Каталог",
+      url: "/"
+    },
+    {
+      name: "Доставка",
+      url: "/delivery"
+    },
+    {
+      name: "Оплата",
+      url: "/payment"
+    },
+    {
+      name: "Контакты",
+      url: "/contact"
+    },
+    {
+      name: "О галерее",
+      url: "/about"
+    },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="App flex flex-col flex-between">
+      <header className="header">
+        <div className="header__inner wrapper flex flex-between flex-center">
+          <Logo src={logoLight} />
+          <Menu list={navItem}/>
+          <Search />
+        </div>
       </header>
+      <div className="content wrapper flex-1">
+        <h1>Картины эпохи Возрождения</h1>
+        <div className="content__collection flex flex-between">
+          {db.map((el, index) => (
+            <Card key={index} {...el} />
+          ))}
+        </div>
+      </div>
+      <footer className="footer wrapper">
+        <div className="footer__inner wrapper flex flex-between flex-center">
+          <Logo src={logoDark} />
+          <Menu list={navItem}/>
+        </div>
+      </footer>
     </div>
   );
 }
