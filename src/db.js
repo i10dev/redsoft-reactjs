@@ -25,7 +25,8 @@ export const db = [
       small: "TajnayavecheryaLeonardodaVinchi.png",
       medium: "",
       big: ""
-    }
+    },
+    btnW: 112
   },
   {
     isSale: true,

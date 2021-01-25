@@ -4,14 +4,15 @@ import { Button } from "../index";
 
 import "./Card.scss";
 
-function Card({ isSale, name, autor, price, src }) {
+function Card({ isSale, name, autor, price, src, btnW }) {
   const [imgSrc, setImgSrc] = React.useState("");
   const img = import(`../../assets/${src.small}`);
   img.then(r => setImgSrc(r.default));
 
   const pricePrevious = () => (
     <span className="price__previous">
-      {new Intl.NumberFormat().format(price.previous)}&#36;
+      {new Intl.NumberFormat().format(price.previous)}{" "}
+      <span className="sign">&#36;</span>
     </span>
   );
 
@@ -24,11 +25,12 @@ function Card({ isSale, name, autor, price, src }) {
           <div className="card__price price">
             {price.previous && pricePrevious()}
             <span className="price__current">
-              {new Intl.NumberFormat().format(price.current)}&#36;
+              {new Intl.NumberFormat().format(price.current)}
+              <span className="sign">&#36;</span>
             </span>
           </div>
           <div className="card__action">
-            <Button />
+            <Button width={btnW} />
           </div>
         </>
       );
@@ -40,7 +42,7 @@ function Card({ isSale, name, autor, price, src }) {
       <div className="card__image">
         <img src={imgSrc} alt="" />
       </div>
-      <div className="inner flex-1">
+      <div className="inner flex flex-between flex-col flex-1">
         <div className="card__label label">
           <div className="label__name">&#171;{name}&#187;</div>
           <div className="label__autor">{autor}</div>

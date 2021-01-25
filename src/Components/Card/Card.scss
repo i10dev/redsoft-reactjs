@@ -6,16 +6,70 @@
 
   img {
     display: block;
+    width: 100%;
   }
 
   .inner {
-    padding: 20px 23px 24px;
+    padding: 20px 23px 22px;
+
+    h3 {
+      font-family: Merriweather;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 150%;
+      color: #343030;
+      margin: 36px 0 16px;
+    }
   }
 
   .price {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     &__previous,
     &__current {
       display: block;
+    }
+
+    &__previous {
+      width: 100%;
+      font-family: Merriweather;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 150%;
+      text-decoration-line: line-through;
+      color: #a0a0a0;
+      .sign {
+        padding-left: 0px;
+      }
+    }
+
+    &__current {
+      font-family: Merriweather;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 150%;
+      color: #343030;
+      .sign {
+        padding-left: 3px;
+      }
+    }
+  }
+
+  .label {
+    &__name,
+    &__autor {
+      font-family: Merriweather;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 150%;
+
+      color: #343030;
     }
   }
 }
