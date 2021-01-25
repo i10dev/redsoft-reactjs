@@ -1,13 +1,10 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Logo, Menu, Search, Card } from "./Components";
 
 import { db } from "./db";
 
 import logoLight from "./assets/logo-light.png";
 import logoDark from "./assets/logo-dark.png";
-
-import phone from "./assets/phone.svg";
-import location from "./assets/location.svg";
 
 import "./App.scss";
 
@@ -35,6 +32,28 @@ function App() {
     }
   ]);
 
+  const [cardList, setCardList] = useState();
+
+  const [busket, setBusket] = useState([]);
+
+  useEffect(() => {
+    const loadDB = JSON.parse(localStorage.getItem("redsoft")) || [];
+
+    const neweDB = db.map(el => {
+      return { ...el, isBuy: loadDB.includes(el.id) ? true : false };
+    });
+
+    setCardList(neweDB);
+  }, []);
+
+  function buyItem(id) {
+    let newList = cardList.map(el => {
+      return el.id === id ? { ...el, isBuy: !el.isBuy } : { ...el };
+    });
+
+    setCardList(newList);
+  }
+
   return (
     <div className="App flex flex-col flex-between">
       <header className="header">
@@ -47,9 +66,15 @@ function App() {
       <div className="content wrapper flex-1">
         <h1 className="content__label">Картины эпохи Возрождения</h1>
         <div className="content__collection flex flex-between">
-          {db.map((el, index) => (
-            <Card key={index} {...el} />
-          ))}
+          {cardList &&
+            cardList.map(el => (
+              <Card
+                key={el.id}
+                {...el}
+                actionClick={() => buyItem(el.id)}
+                setBtnText
+              />
+            ))}
         </div>
       </div>
       <footer className="footer wrapper">

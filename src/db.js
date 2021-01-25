@@ -11,7 +11,8 @@ export const db = [
       small: "RozhdenieVenerySandroBottichelli.png",
       medium: "",
       big: ""
-    }
+    },
+    id: 1
   },
   {
     isSale: true,
@@ -26,7 +27,8 @@ export const db = [
       medium: "",
       big: ""
     },
-    btnW: 112
+    btnW: 112,
+    id: 2
   },
   {
     isSale: true,
@@ -40,7 +42,8 @@ export const db = [
       small: "SotvorenieAdamaMikelandzhelo.png",
       medium: "",
       big: ""
-    }
+    },
+    id: 3
   },
   {
     isSale: false,
@@ -54,6 +57,7 @@ export const db = [
       small: "UrokanatomiiRembrandt.png",
       medium: "",
       big: ""
-    }
+    },
+    id: 4
   }
 ];

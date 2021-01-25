@@ -4,10 +4,23 @@ import { Button } from "../index";
 
 import "./Card.scss";
 
-function Card({ isSale, name, autor, price, src, btnW }) {
+function Card({
+  isSale,
+  isBuy,
+  name,
+  autor,
+  price,
+  src,
+  btnW,
+  actionClick = null
+}) {
   const [imgSrc, setImgSrc] = React.useState("");
-  const img = import(`../../assets/${src.small}`);
-  img.then(r => setImgSrc(r.default));
+
+  const img = import(`../../assets/${src.small}`).then(r =>
+    setImgSrc(r.default)
+  );
+
+  const btnText = isBuy ? 'В корзине':'купить'
 
   const pricePrevious = () => (
     <span className="price__previous">
@@ -30,7 +43,11 @@ function Card({ isSale, name, autor, price, src, btnW }) {
             </span>
           </div>
           <div className="card__action">
-            <Button width={btnW} />
+            <Button
+              textDefault={btnText}
+              width={btnW}
+              actionClick={actionClick}
+            />
           </div>
         </>
       );
