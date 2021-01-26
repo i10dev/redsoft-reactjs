@@ -47,6 +47,7 @@ function Card({
               textDefault={btnText}
               width={btnW}
               actionClick={actionClick}
+              className={isBuy?"success":''}
             />
           </div>
         </>

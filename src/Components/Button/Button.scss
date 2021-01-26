@@ -18,5 +18,29 @@
 
   &.success {
     background: #5b3a32;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    position: relative;
+    width: initial;
+    padding: 0 10px 0 30px;
+    &::after {
+      content: "";
+      position: absolute;
+      background: url("../../assets/check.png");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+  }
+}
+
+.success {
+  &::after {
+    content: "";
+    position: absolute;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACpSURBVHgB7ZPbDcIwDEU9AiMwQkdgBDaADegGMAqbMAIjMIIlem2TgBQIIgXxUttU/eqR8pHk6shXSohG2gKgoL4QO6+hLkBPJeXylLlQVTajHF5lgC0pB1W/qmW5Vc0ui7qm2OZvWMTNYX7HbNOf901lkRiKYVF3eH8KzCggjhvLEkfY9jEFJ2ln2XeplveJb/t4Tl1J9dPKkn1K/Z76Iv4ADmFCI4NyBfVJ1PZiPYjuAAAAAElFTkSuQmCC);
+    z-index: 7;
+    width: 15px;
+    height: 15px;
+    left: 8px;
   }
 }
